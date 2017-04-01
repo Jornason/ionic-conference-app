@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import { IonicApp, IonicModule } from 'ionic-angular';
-import { Storage } from '@ionic/storage';
+import { IonicStorageModule } from '@ionic/storage';
 
 import { ConferenceApp } from './app.component';
 
@@ -23,6 +23,9 @@ import { SupportPage } from '../pages/support/support';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { SplashScreen } from '@ionic-native/splash-screen';
+
 
 @NgModule({
   declarations: [
@@ -43,7 +46,8 @@ import { UserData } from '../providers/user-data';
     SupportPage
   ],
   imports: [
-    IonicModule.forRoot(ConferenceApp)
+    IonicModule.forRoot(ConferenceApp),
+		IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,6 +67,11 @@ import { UserData } from '../providers/user-data';
     TutorialPage,
     SupportPage
   ],
-  providers: [ConferenceData, UserData, Storage]
+  providers: [
+    ConferenceData,
+    UserData,
+    InAppBrowser,
+    SplashScreen
+  ]
 })
 export class AppModule { }
